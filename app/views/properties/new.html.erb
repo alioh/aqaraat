@@ -1,0 +1,15 @@
+<h1> New Property </h1>
+
+<%= simple_form_for(@property, html: { class: "form-horisontal"}) do |f| %>
+	<%= f.input :address_one, label: "Address one", :input_html => {:style=> 'width: 250px'} %>
+	<%= f.input :address_two, label: "Address two", :input_html => {:style=> 'width: 250px'} %>
+	<%= f.input :city, label: "City", :input_html => {:style=> 'width: 250px'} %>
+	<%= f.input :state, label: "State", :input_html => {:style=> 'width: 250px'} %>
+	<%= f.input :zip_code, label: "Zip code", :input_html => {:style=> 'width: 250px'} %>
+	<%= f.input :rent, label: "Monthly rent", :input_html => {:style=> 'width: 250px'} %>
+
+  <div class="form-actions">
+    <%= f.submit "Submit" , class: "btn btn-primary" %>
+  </div>
+
+<% end %>
