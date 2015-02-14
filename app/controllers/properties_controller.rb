@@ -1,5 +1,7 @@
 class PropertiesController < ApplicationController
+	before_action :find_property, only: [:show, :edit, :update, :destroy]
 	def index
+		@properties = Property.all.order("created_at DESC")
 	end
 
 	def show
@@ -34,5 +36,7 @@ class PropertiesController < ApplicationController
 	end
 
 	def find_property
+		@property = Property.find(params[:id])
+
 	end
 end

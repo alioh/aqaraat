@@ -1,0 +1,31 @@
+<h1> Your Properties: </h1>
+<br>
+
+<table class="table" border="0" style="width:100%">
+	<tr>
+		<td><b>Address One</b></td>
+		<td><b>Address Two</b></td>
+		<td><b>City</b></td>
+		<td><b>State</b></td>
+		<td><b>Zip code</b></td>
+		<td><b>Monthly rent</b></td>
+		<td><b>Action</b></td>
+	</tr>
+
+	<% @properties.each do |pro| %>
+	
+	<tr>
+		<td><%= pro.address_one %></td>
+		<td><%= pro.address_two %></td>
+		<td><%= pro.city %></td>
+		<td><%= pro.state %></td>
+		<td><%= pro.zip_code %></td>
+		<td><%= pro.rent %></td>
+		<td><%= link_to "Edit Property", pro %></td>
+	</tr>
+
+<br>
+<% end %>
+</table>
+
+<a type="button" class="btn btn-primary btn-lg" href="properties/new">Add new property</a>
