@@ -1,5 +1,7 @@
 class PropertiesController < ApplicationController
+	before_action :signed_in_user, only: [:index, :show, :edit, :update, :destroy, :create, :new]
 	before_action :find_property, only: [:show, :edit, :update, :destroy]
+
 	def index
 		@properties = Property.all.order("created_at ASC")
 	end
@@ -44,6 +46,11 @@ class PropertiesController < ApplicationController
 
 	def find_property
 		@property = Property.find(params[:id])
-
 	end
+
+	def signed_in_user
+	    unless signed_in?
+	        redirect_to root_path
+    	end
+    end
 end
