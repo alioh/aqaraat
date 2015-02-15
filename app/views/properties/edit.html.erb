@@ -1,4 +1,4 @@
-<h1> New Property </h1>
+<h1> Edit Property </h1>
 
 <%= simple_form_for(@property, html: { class: "form-horisontal"}) do |f| %>
 	<%= f.input :address_one, label: "Address one", :input_html => {:style=> 'width: 250px'} %>
@@ -10,7 +10,7 @@
 
   <div class="form-actions">
     <%= f.submit "Submit" , class: "btn btn-primary" %>
-	<%= link_to "Back", "/properties", class: "btn btn-primary" %>
+    <%= link_to "Back", "/properties", class: "btn btn-primary" %>
   </div>
 
 <% end %>

@@ -24,9 +24,16 @@ class PropertiesController < ApplicationController
 	end
 
 	def update
+		if @property.update(propery_params)
+			redirect_to @property
+		else
+			render "edit"
+		end
 	end
 
 	def destroy
+		@property.destroy
+		redirect_to @property
 	end
 
 	private
