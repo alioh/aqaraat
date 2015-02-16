@@ -3,7 +3,9 @@ class PropertiesController < ApplicationController
 	before_action :find_property, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@properties = Property.all.order("created_at ASC")
+		user_id = User.find(current_user)
+		@properties = user_id.properties
+		#.order("created_at ASC")
 	end
 
 	def show
@@ -14,7 +16,7 @@ class PropertiesController < ApplicationController
 	end
 
 	def create
-		@property = Property.new(propery_params)
+		@property = Property.new(property_params)
 		if @property.save
 			redirect_to @property
 		else
@@ -26,7 +28,7 @@ class PropertiesController < ApplicationController
 	end
 
 	def update
-		if @property.update(propery_params)
+		if @property.update(property_params)
 			redirect_to @property
 		else
 			render "edit"
@@ -40,7 +42,7 @@ class PropertiesController < ApplicationController
 
 	private
 
-	def propery_params
+	def property_params
 		params.require(:property).permit(:address_one, :address_two, :city, :state, :zip_code, :rent)
 	end
 
@@ -50,7 +52,7 @@ class PropertiesController < ApplicationController
 
 	def signed_in_user
 	    unless signed_in?
-	        redirect_to root_path
+	        redirect_to root_path, :notice => "You must be logged in to view your properties."
     	end
     end
 end
