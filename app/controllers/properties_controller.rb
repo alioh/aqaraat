@@ -9,10 +9,12 @@ class PropertiesController < ApplicationController
 	end
 
 	def show
+		#if current_user.id != params[:id] then redirect_to root_path end
 		if @property.user_id == current_user.id
 			
 		else
-			redirect_to root_path, :notice => "You dont have access to this property."
+			return redirect_to root_path, :notice => "You dont have access to this property."
+
 		end
 	end
 
@@ -31,6 +33,11 @@ class PropertiesController < ApplicationController
 	end
 
 	def edit
+		if @property.user_id == current_user.id
+			
+		else
+			redirect_to root_path, :notice => "You dont have access to this property."
+		end
 	end
 
 	def update
@@ -42,6 +49,11 @@ class PropertiesController < ApplicationController
 	end
 
 	def destroy
+		if @property.user_id == current_user.id
+			
+		else
+			redirect_to root_path, :notice => "You dont have access to this property."
+		end
 		@property.destroy
 		redirect_to @property
 	end
