@@ -9,6 +9,11 @@ class PropertiesController < ApplicationController
 	end
 
 	def show
+		if @property.user_id == current_user.id
+			
+		else
+			redirect_to root_path, :notice => "You dont have access to this property."
+		end
 	end
 
 	def new
