@@ -4,6 +4,8 @@
 		    <h4>Address:</h4>
 			<p><%= @property.address_one %></p>
 			<p><%= @property.address_two %></p>
+			<h4>Address Type:</h4>
+			<p><%= @property.addresstype %></p>
 			<h4>City:</h4>
 			<p><%= @property.city %></p>
 			<h4>State:</h4>
@@ -12,6 +14,8 @@
 			<p><%= @property.zip_code %></p>
 			<h4>Monthly rent:</h4>
 			<p><%= @property.rent %></p>
+			<h4>Vacancy:</h4>
+			<p><%= @property.vacancy %></p>
 			<%= link_to "Back", "/properties", class: "btn btn-primary" %>
         </div>
         <div class="col-xs-6">
