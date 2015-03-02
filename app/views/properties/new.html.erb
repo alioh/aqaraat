@@ -1,8 +1,9 @@
 <h1> New Property </h1>
 
 <%= simple_form_for(@property, html: { class: "form-horisontal"}) do |f| %>
-	<%= f.input :address_one, label: "Address one", :input_html => {:style=> 'width: 250px'} %>
-	<%= f.input :address_two, label: "Address two", :input_html => {:style=> 'width: 250px'} %>
+	<%= f.input :address_one, label: "Street Address", :input_html => {:style=> 'width: 250px'} %>
+	<%= f.input :address_two, label: "Suite/Apt #", :input_html => {:style=> 'width: 250px'} %>
+	<%= f.input :addresstype, collection: [ "House", "Apartment" ], label: "Address Type", :input_html => {:style=> 'width: 250px'} %>
 	<%= f.input :city, label: "City", :input_html => {:style=> 'width: 250px'} %>
 	<%= f.input :state, label: "State", :input_html => {:style=> 'width: 250px'} %>
 	<%= f.input :zip_code, label: "Zip code", :input_html => {:style=> 'width: 250px'} %>

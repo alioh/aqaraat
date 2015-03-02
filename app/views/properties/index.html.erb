@@ -4,21 +4,42 @@
 <table class="table table-striped" border="0" style="width:100%">
 	<tr>
 		<th>ID#</th>
-		<th>Address One</th>
-		<th>Address Two</th>
+		<th>Street Address</th>
+		<th>Suite/Apt #</th>
+		<th>Address Type</th>
 		<th>City</th>
 		<th>State</th>
 		<th>Zip code</th>
 		<th>Monthly rent</th>
 		<th>Action</th>
 	</tr>
-
+	<% count = 1%>
 	<% @properties.each do |pro| %>
-
+	<% if  pro.state == "PA"%>
+		<tr class="success">
+			<td><%= count %></td>
+			<td><%= pro.address_one %></td>
+			<td><%= pro.address_two %></td>
+			<td><%= pro.addresstype %></td>
+			<td><%= pro.city %></td>
+			<td><%= pro.state %></td>
+			<td><%= pro.zip_code %></td>
+			<td><%= pro.rent %></td>
+			<td>
+				<div class="btn-group btn-group-xs" role="group" aria-label="...">
+				  <button type="button" class="btn btn-default"><%= link_to "View", pro %></button>
+				  <button type="button" class="btn btn-default"><%= link_to "Edit", edit_property_path(pro)%></button>
+				  <button type="button" class="btn btn-default"><%= link_to "Delete", property_path(pro), method: :delete, data: { confirm: "Are you sure you want to delete this property?" }%></button>
+				</div>
+			</td>
+			<% count+=1 %>
+		</tr>
+	<% else %>
 	<tr>
-		<td><%= pro.id %></td>
+		<td><%= count %></td>
 		<td><%= pro.address_one %></td>
 		<td><%= pro.address_two %></td>
+		<td><%= pro.addresstype %></td>
 		<td><%= pro.city %></td>
 		<td><%= pro.state %></td>
 		<td><%= pro.zip_code %></td>
@@ -30,7 +51,9 @@
 			  <button type="button" class="btn btn-default"><%= link_to "Delete", property_path(pro), method: :delete, data: { confirm: "Are you sure you want to delete this property?" }%></button>
 			</div>
 		</td>
+		<% count+=1 %>
 	</tr>
+	<% end %>
 
 <br>
 <% end %>

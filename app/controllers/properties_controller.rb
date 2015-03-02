@@ -61,7 +61,7 @@ class PropertiesController < ApplicationController
 	private
 
 	def property_params
-		params.require(:property).permit(:address_one, :address_two, :city, :state, :zip_code, :rent)
+		params.require(:property).permit(:address_one, :address_two, :addresstype, :city, :state, :zip_code, :rent)
 	end
 
 	def find_property
