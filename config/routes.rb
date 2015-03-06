@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :properties
+  resources :bills
   get 'about' => "pages#about"
   get 'properties' => "properties#index"
+  get 'bills' => "bills#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

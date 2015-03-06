@@ -1,6 +1,6 @@
-<h1> New Property </h1>
+fvacancy<h1> New Property </h1>
 
-<%= simple_form_for(@property, html: { class: "form-horisontal"}) do |f| %>
+<%= simple_form_for(@property, html: { class: "form-horizontal"}) do |f| %>
 	<%= f.input :address_one, label: "Street Address", :input_html => {:style=> 'width: 250px'} %>
 	<%= f.input :address_two, label: "Suite/Apt #", :input_html => {:style=> 'width: 250px'} %>
 	<%= f.input :addresstype, collection: [ "House", "Apartment" ], label: "Address Type", :input_html => {:style=> 'width: 250px'} %>
@@ -12,7 +12,7 @@
 
   <div class="form-actions">
     <%= f.submit "Submit" , class: "btn btn-primary" %>
-	<%= link_to "Back", "/properties", class: "btn btn-primary" %>
+	<%= link_to "Back", "/bills", class: "btn btn-primary" %>
   </div>
 
 <% end %>

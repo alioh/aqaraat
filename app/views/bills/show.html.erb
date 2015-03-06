@@ -1,0 +1,15 @@
+<div class="row-fluid">
+    <h4>Property number:</h4>
+	<p><%= @bill.property_id %></p>
+	<h4>Due Date:</h4>
+	<p><%= @bill.duedate %></p>
+	<h4>Bill Type:</h4>
+	<p><%= @bill.billtype %></p>
+	<h4>Amount:</h4>
+	<p>$<%= @bill.amount %></p>
+	<h4>Description:</h4>
+	<p><%= @bill.description %></p>
+	<h4>Status:</h4>
+	<p><%= @bill.status %></p>
+	<%= link_to "Back", "/bills", class: "btn btn-primary" %>
+</div>

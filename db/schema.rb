@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150302160522) do
+ActiveRecord::Schema.define(version: 20150306234246) do
+
+  create_table "bills", force: :cascade do |t|
+    t.date     "duedate"
+    t.integer  "amount"
+    t.string   "billtype"
+    t.string   "status"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "property_id"
+    t.integer  "user_id"
+  end
+
+  add_index "bills", ["property_id"], name: "index_bills_on_property_id"
+  add_index "bills", ["user_id"], name: "index_bills_on_user_id"
 
   create_table "properties", force: :cascade do |t|
     t.string   "address_one"
@@ -25,6 +40,8 @@ ActiveRecord::Schema.define(version: 20150302160522) do
     t.integer  "user_id"
     t.string   "addresstype"
     t.string   "vacancy"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "users", force: :cascade do |t|

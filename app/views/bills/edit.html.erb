@@ -1,0 +1,15 @@
+<h1> Edit Bill </h1>
+
+<%= simple_form_for(@bill, html: { class: "form-horizntal"}) do |f| %>
+	<%= f.input :duedate, label: "Dud Date", :input_html => {:style=> 'width: 250px'} %>
+	<%= f.input :amount, label: "Amount", :input_html => {:style=> 'width: 250px'} %>
+	<%= f.input :billtype, collection: [ "Energy", "Water", "Telephone", "Other" ], label: "Type", :input_html => {:style=> 'width: 250px'} %>
+	<%= f.input :description, label: "Description", :input_html => {:style=> 'width: 250px'} %>
+	<%= f.input :status, collection: [ "Paid", "Unpaid" ], label: "Status", :input_html => {:style=> 'width: 250px'} %>
+
+  <div class="form-actions">
+    <%= f.submit "Submit" , class: "btn btn-primary" %>
+    <%= link_to "Back", "/bills", class: "btn btn-primary" %>
+  </div>
+
+<% end %>

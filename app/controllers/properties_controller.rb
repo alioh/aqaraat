@@ -11,7 +11,7 @@ class PropertiesController < ApplicationController
 	def show
 		#if current_user.id != params[:id] then redirect_to root_path end
 		if @property.user_id == current_user.id
-			
+			#..
 		else
 			return redirect_to root_path, :notice => "You dont have access to this property."
 
@@ -58,6 +58,10 @@ class PropertiesController < ApplicationController
 		redirect_to @property
 	end
 
+    def fulladdress
+		puts @property.address_one + "," + @property.state 
+	end
+
 	private
 
 	def property_params
@@ -73,4 +77,5 @@ class PropertiesController < ApplicationController
 	        redirect_to root_path, :notice => "You must be logged in to view your properties."
     	end
     end
+
 end

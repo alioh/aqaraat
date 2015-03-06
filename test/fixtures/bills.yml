@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  duedate: 2015-03-06
+  amount: MyString
+  type: 
+  status: MyString
+  description: MyText
+
+two:
+  duedate: 2015-03-06
+  amount: MyString
+  type: 
+  status: MyString
+  description: MyText
