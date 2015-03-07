@@ -3,11 +3,11 @@ class BillsController < ApplicationController
 	before_action :find_bill, only: [:show, :edit, :update, :destroy]
 
 	def index
-		user_id = User.find(current_user)
-		@bills = user_id.bills
-
 		user_id2 = User.find(current_user)
-		@properties = user_id2.properties
+		@bills = user_id2.bills
+
+		# user_id3 = Property.where(:user_id => current_user)
+		# @properties = user_id3.properties
 	end
 
 	def show
@@ -15,7 +15,7 @@ class BillsController < ApplicationController
 		if @bill.user_id == current_user.id
 			#..
 		else
-			return redirect_to root_path, :notice => "You dont have access to this property."
+			return redirect_to root_path, :notice => "You dont have access to this bill."
 
 		end
 	end
@@ -63,7 +63,7 @@ class BillsController < ApplicationController
 	private
 
 	def bill_params
-		params.require(:bill).permit(:duedate, :amount, :type, :status, :description)
+		params.require(:bill).permit(:property_id, :duedate, :amount, :type, :status, :description)
 	end
 
 	def find_bill

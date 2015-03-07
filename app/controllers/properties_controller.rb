@@ -6,6 +6,8 @@ class PropertiesController < ApplicationController
 		user_id = User.find(current_user)
 		@properties = user_id.properties
 		#.order("created_at ASC")
+
+		@bills = Bill.all
 	end
 
 	def show
