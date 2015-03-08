@@ -49,6 +49,61 @@
 		</div>
     </div>
 </div>
+<h1> Bills: </h1>
+<table class="table table-striped" border="0" style="width:100%">
+	<tr>
+		<th>ID#</th>
+		<th>Due Date</th>
+		<th>Bill Type</th>
+		<th>Status</th>
+		<th>Amount Due</th>
+		<th>Action</th>
+	</tr>
+	<% count = 1%>
+	<% @bills.each do |b| %>
+	<% next if b.property_id != @property.id  %>
+		
+
+	<% if  b.status == "Unpaid" and b.duedate < Time.zone.now %>
+		<tr class="danger">
+			<td><%= count %></td>
+			<td><%= b.duedate %></td>
+			<td><%= b.billtype %></td>
+			<td><%= b.status %></td>
+			<td><%= b.amount %></td>
+			<td>
+				<div class="btn-group btn-group-xs" role="group" aria-label="...">
+				  <button type="button" class="btn btn-default"><%= link_to "View", b %></button>
+				  <button type="button" class="btn btn-default"><%= link_to "Edit", edit_bill_path(b)%></button>
+				  <button type="button" class="btn btn-default"><%= link_to "Delete", bill_path(b), method: :delete, data: { confirm: "Are you sure you want to delete this bill?" }%></button>
+				</div>
+			</td>
+			<% count+=1 %>
+		</tr>
+	<% else %>
+	<tr>
+		<td><%= count %></td>
+		<td><%= b.duedate %></td>
+		<td><%= b.billtype %></td>
+		<td><%= b.status %></td>
+		<td><%= b.amount %></td>
+		<td>
+			<div class="btn-group btn-group-xs" role="group" aria-label="...">
+			  <button type="button" class="btn btn-default"><%= link_to "View", b %></button>
+			  <button type="button" class="btn btn-default"><%= link_to "Edit", edit_bill_path(b)%></button>
+			  <button type="button" class="btn btn-default"><%= link_to "Delete", bill_path(b), method: :delete, data: { confirm: "Are you sure you want to delete this bill?" }%></button>
+			</div>
+		</td>
+		<% count+=1 %>
+	</tr>
+	<% end %>
+<% end %>
+</table>
+
+<!-- <a class="btn btn-primary" href="/properties/new">Add new property</a> -->
+<div class="form-actions">
+	<%= link_to "Add new bill", new_bill_path, class: "btn btn-primary" %>
+</div>
 
 
 

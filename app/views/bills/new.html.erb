@@ -1,7 +1,14 @@
 <h1> New bill </h1>
-
+<% users_properties = [] %>
+<% users_properties_address = [] %>
+<% @properties.each do |b| %>
+	<% if b.user_id == current_user.id %>
+		<% users_properties << b.id %>
+		<% users_properties_address << b.address_one %>
+	<% end %>
+<% end %>
 <%= simple_form_for(@bill, html: { class: "form-horizontal"}) do |f| %>
-	<%= f.input :property_id, label: "Property ID", :input_html => {:style=> 'width: 250px'} %>
+	<%= f.input :property_id, collection: users_properties, label: "Property ID", :input_html => {:style=> 'width: 250px'} %>
 	<%= f.input :duedate, label: "Dud Date", :input_html => {:style=> 'width: 250px'} %>
 	<%= f.input :amount, label: "Amount", :input_html => {:style=> 'width: 250px'} %>
 	<%= f.input :billtype, collection: [ "Energy", "Water", "Telephone", "Other" ], label: "Type", :input_html => {:style=> 'width: 250px'} %>
@@ -10,8 +17,7 @@
 
   <div class="form-actions">
     <%= f.submit "Submit" , class: "btn btn-primary" %>
-	<%= link_to "Back", "/bills", class: "btn btn-primary" %>
+	<%= link_to "Back", "/properties", class: "btn btn-primary" %>
   </div>
-
 
 <% end %>

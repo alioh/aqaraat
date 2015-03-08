@@ -11,6 +11,7 @@ class PropertiesController < ApplicationController
 	end
 
 	def show
+		@bills = Bill.all
 		#if current_user.id != params[:id] then redirect_to root_path end
 		if @property.user_id == current_user.id
 			#..

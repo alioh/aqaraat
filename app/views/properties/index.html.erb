@@ -10,6 +10,7 @@ Red label = not available
 		<th>State</th>
 		<th>Zip code</th>
 		<th>Monthly rent</th>
+		<th>Property ID#</th>
 		<th>Action</th>
 	</tr>
 	<% count = 1%>
@@ -23,7 +24,8 @@ Red label = not available
 			<td><%= pro.city %></td>
 			<td><%= pro.state %></td>
 			<td><%= pro.zip_code %></td>
-			<td><%= pro.rent %></td>
+			<td>$<%= pro.rent %></td>
+			<td><%= pro.id %></td>
 			<td>
 				<div class="btn-group btn-group-xs" role="group" aria-label="...">
 				  <button type="button" class="btn btn-default"><%= link_to "View", pro %></button>
@@ -42,7 +44,8 @@ Red label = not available
 		<td><%= pro.city %></td>
 		<td><%= pro.state %></td>
 		<td><%= pro.zip_code %></td>
-		<td><%= pro.rent %></td>
+		<td>$<%= pro.rent %></td>
+		<td><%= pro.id %></td>
 		<td>
 			<div class="btn-group btn-group-xs" role="group" aria-label="...">
 			  <button type="button" class="btn btn-default"><%= link_to "View", pro %></button>
@@ -69,6 +72,7 @@ Red label = not available
 		<th>Bill Type</th>
 		<th>Status</th>
 		<th>Amount Due</th>
+		<th>Property ID#</th>
 		<th>Action</th>
 	</tr>
 	<% count = 1%>
@@ -81,7 +85,8 @@ Red label = not available
 			<td><%= b.duedate %></td>
 			<td><%= b.billtype %></td>
 			<td><%= b.status %></td>
-			<td><%= b.amount %></td>
+			<td>$<%= b.amount %></td>
+			<td><%= b.property_id %></td>
 			<td>
 				<div class="btn-group btn-group-xs" role="group" aria-label="...">
 				  <button type="button" class="btn btn-default"><%= link_to "View", b %></button>
@@ -97,7 +102,8 @@ Red label = not available
 		<td><%= b.duedate %></td>
 		<td><%= b.billtype %></td>
 		<td><%= b.status %></td>
-		<td><%= b.amount %></td>
+		<td>$<%= b.amount %></td>
+		<td><%= b.property_id %></td>
 		<td>
 			<div class="btn-group btn-group-xs" role="group" aria-label="...">
 			  <button type="button" class="btn btn-default"><%= link_to "View", b %></button>

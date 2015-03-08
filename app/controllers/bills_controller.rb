@@ -11,6 +11,7 @@ class BillsController < ApplicationController
 	end
 
 	def show
+		@properties = Property.all
 		#if current_user.id != params[:id] then redirect_to root_path end
 		if @bill.user_id == current_user.id
 			#..
@@ -22,6 +23,9 @@ class BillsController < ApplicationController
 
 	def new
 		@bill = Bill.new
+		# user_id2 = User.find(current_user)
+		# @properties  = Property.where(user_id: user_id2).take
+		@properties = Property.all
 	end
 
 	def create
@@ -35,6 +39,7 @@ class BillsController < ApplicationController
 	end
 
 	def edit
+		@properties = Property.all
 		if @bill.user_id == current_user.id
 			# ...
 		else
@@ -63,7 +68,7 @@ class BillsController < ApplicationController
 	private
 
 	def bill_params
-		params.require(:bill).permit(:property_id, :duedate, :amount, :type, :status, :description)
+		params.require(:bill).permit(:property_id, :duedate, :amount, :billtype, :status, :description)
 	end
 
 	def find_bill
