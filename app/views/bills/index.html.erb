@@ -1,3 +1,41 @@
+<script type="text/javascript" charset:"uft-8">
+	$(function() {
+		new  Highcharts.Chart({
+			chart: {
+				renderTo: "bills_chart",
+				type: "column",
+			},
+			title: {
+				text: "Bills by Month"
+			},
+
+			xAxis: {
+				type: "datetime"
+			},
+
+			yAxis: {
+				title: {
+					text: "Amount"
+				}
+			},
+
+			tooltip: {
+				formatter: function() {
+					return Highcharts.dateFormat("%B %e, %Y", this.x) + ": " + "$" + Highcharts.numberFormat(this.y, 2);
+				}
+			},
+
+			series: [{
+				name: "Bills",
+				pointInterval: <%= 1.day * 1000 %>,
+				pointStart: <%= 12.months.ago.to_i * 1000 %>,
+				data: <%= (12.months.ago.to_date..Date.today).map { |date| Bill.total_on(date).to_f }.inspect %>
+			}]
+		})
+	})
+</script>
+<div id="bills_chart" style="width:100%; height:100%; "></div>
+
 <h1> Your Properties Bills: </h1>
 
 <table class="table table-striped" border="0" style="width:100%">

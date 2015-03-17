@@ -13,8 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require raphael
+//= require morris
 //= require turbolinks
 //= require underscore
+//= require highcharts
 //= require gmaps/google
 //= require_tree .
 

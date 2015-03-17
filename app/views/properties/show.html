@@ -20,7 +20,6 @@
 			<p><%= @property.vacancy %></p>
 			<h4>ID#:</h4>
 			<p><%= @property.id %></p>
-			<%= link_to "Back", "/properties", class: "btn btn-primary" %>
         </div>
         <div class="col-xs-8">
         	<div style='width: 800px;'>
@@ -103,6 +102,7 @@
 <!-- <a class="btn btn-primary" href="/properties/new">Add new property</a> -->
 <div class="form-actions">
 	<%= link_to "Add new bill", new_bill_path, class: "btn btn-primary" %>
+	<%= link_to "Back", "/properties", class: "btn btn-primary" %>
 </div>
 
 
