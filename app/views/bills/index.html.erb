@@ -40,22 +40,22 @@
 
 <table class="table table-striped" border="0" style="width:100%">
 	<tr>
-		<th>ID#</th>
-		<th>Due Date</th>
-		<th>Bill Type</th>
-		<th>Status</th>
-		<th>Amount Due</th>
+		<th><%= sortable "id", "ID#" %></th>
+		<th><%= sortable "duedate", "Due Date" %></th>
+		<th><%= sortable "billtype", "Bill Type" %></th>
+		<th><%= sortable "status" %></th>
+		<th><%= sortable "amount" %></th>
 		<th>Action</th>
 	</tr>
 	<% count = 1%>
 	<% @bills.each do |b| %>
 	<% if  b.status == "Unpaid" and b.duedate < Time.zone.now %>
 		<tr class="danger">
-			<td><%= count %></td>
+			<td><%= b.id %></td>
 			<td><%= b.duedate %></td>
 			<td><%= b.billtype %></td>
 			<td><%= b.status %></td>
-			<td><%= b.amount %></td>
+			<td>$<%= b.amount %></td>
 			<td>
 				<div class="btn-group btn-group-xs" role="group" aria-label="...">
 				  <div type="button" class="btn btn-default"><%= link_to "View", b %></div>
@@ -67,11 +67,11 @@
 		</tr>
 	<% else %>
 	<tr>
-		<td><%= count %></td>
+		<td><%= b.id %></td>
 		<td><%= b.duedate %></td>
 		<td><%= b.billtype %></td>
 		<td><%= b.status %></td>
-		<td><%= b.amount %></td>
+		<td>$<%= b.amount %></td>
 		<td>
 			<div class="btn-group btn-group-xs" role="group" aria-label="...">
 			  <div type="button" class="btn btn-default"><%= link_to "View", b %></div>

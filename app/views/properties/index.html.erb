@@ -2,15 +2,15 @@
 Red label = not available
 <table class="table table-striped" border="0" style="width:100%">
 	<tr>
-		<th>ID#</th>
-		<th>Street Address</th>
-		<th>Suite/Apt #</th>
-		<th>Address Type</th>
-		<th>City</th>
-		<th>State</th>
-		<th>Zip code</th>
-		<th>Monthly rent</th>
-		<th>Property ID#</th>
+		<th>ID</th>
+		<th><%= sortable "address_one", "Street Address" %></th>
+		<th><%= sortable "address_two", "Suite/Apt #" %></th>
+		<th><%= sortable "addresstype", "Address Type" %></th>
+		<th><%= sortable "City" %></th>
+		<th><%= sortable "State" %></th>
+		<th><%= sortable "zip_code", "Zip code" %></th>
+		<th><%= sortable "rent", "Monthly rent" %></th>
+		<th><%= sortable "ID" , "Property ID#" %></th>
 		<th>Action</th>
 	</tr>
 	<% count = 1%>
@@ -67,12 +67,12 @@ Red label = not available
 <h1> Your Properties Bills: </h1>
 <table class="table table-striped" border="0" style="width:100%">
 	<tr>
-		<th>ID#</th>
-		<th>Due Date</th>
-		<th>Bill Type</th>
-		<th>Status</th>
-		<th>Amount Due</th>
-		<th>Property ID#</th>
+		<th><%= sortable2 "id", "ID#" %></th>
+		<th><%= sortable2 "duedate", "Due Date" %></th>
+		<th><%= sortable2 "billtype", "Bill Type" %></th>
+		<th><%= sortable2 "status" %></th>
+		<th><%= sortable2 "amount" %></th>
+		<th><%= sortable2 "ID" , "Property ID#" %></th>
 		<th>Action</th>
 	</tr>
 	<% count = 0%>
@@ -82,7 +82,7 @@ Red label = not available
 	<% elsif  b.status == "Unpaid" and b.duedate < Time.zone.now %>
 	<% count = count + 1 %>
 		<tr class="danger">
-			<td><%= count %></td>
+			<td><%= b.id %></td>
 			<td><%= b.duedate %></td>
 			<td><%= b.billtype %></td>
 			<td><%= b.status %></td>
@@ -100,7 +100,7 @@ Red label = not available
 	<% else %>
 	<% count = count + 1 %>
 	<tr>
-		<td><%= count %></td>
+		<td><%= b.id %></td>
 		<td><%= b.duedate %></td>
 		<td><%= b.billtype %></td>
 		<td><%= b.status %></td>

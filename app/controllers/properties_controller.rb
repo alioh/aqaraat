@@ -1,13 +1,13 @@
 class PropertiesController < ApplicationController
 	before_action :signed_in_user, only: [:index, :show, :edit, :update, :destroy, :create, :new]
 	before_action :find_property, only: [:show, :edit, :update, :destroy]
-
+	helper_method :sort_column, :sort_direction, :sort_column2
 	def index
 		user_id = User.find(current_user)
-		@properties = user_id.properties
+		@properties = user_id.properties.order(sort_column2 + " " + sort_direction)
 		#.order("created_at ASC")
 
-		@bills = Bill.all
+		@bills = Bill.order(sort_column + " " + sort_direction)
 	end
 
 	def show
@@ -79,6 +79,18 @@ class PropertiesController < ApplicationController
 	    unless signed_in?
 	        redirect_to root_path, :notice => "You must be logged in to view your properties."
     	end
+    end
+
+    def sort_column2
+    	Property.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+
+    def sort_column
+    	Bill.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+
+    def sort_direction
+    	%w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 
 end
