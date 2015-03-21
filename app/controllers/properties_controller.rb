@@ -1,7 +1,8 @@
 class PropertiesController < ApplicationController
 	before_action :signed_in_user, only: [:index, :show, :edit, :update, :destroy, :create, :new]
 	before_action :find_property, only: [:show, :edit, :update, :destroy]
-	helper_method :sort_column, :sort_direction, :sort_column2
+	helper_method :sort_column, :sort_direction, :sort_column2, :full_address
+
 	def index
 		user_id = User.find(current_user)
 		@properties = user_id.properties.order(sort_column2 + " " + sort_direction)
@@ -61,9 +62,7 @@ class PropertiesController < ApplicationController
 		redirect_to @property
 	end
 
-    def fulladdress
-		puts @property.address_one + "," + @property.state 
-	end
+
 
 	private
 

@@ -62,10 +62,13 @@
 	<%= f.input :zip_code, label: "Zip code", :input_html => {:style=> 'width: 250px'} %>
 	<%= f.input :rent, label: "Monthly rent", :input_html => {:style=> 'width: 250px'} %>
 	<%= f.input :vacancy, collection: [ "Yes", "No" ], label: "Vacancy", :input_html => {:style=> 'width: 250px'} %>
+    <%= f.input :latitude, label: "latitude", :input_html => {:style=> 'width: 250px'} %>
+    <%= f.input :longitude, label: "longitude", :input_html => {:style=> 'width: 250px'} %>
+
 
   <div class="form-actions">
     <%= f.submit "Submit" , class: "btn btn-primary" %>
-	<%= link_to "Back", "/bills", class: "btn btn-primary" %>
+	<%= link_to "Back", "/properties", class: "btn btn-primary" %>
   </div>
 
 <% end %>
