@@ -8,16 +8,16 @@ class PropertiesController < ApplicationController
 		@properties = user_id.properties.order(sort_column2 + " " + sort_direction)
 		#.order("created_at ASC")
 		@bills = Bill.order(sort_column + " " + sort_direction)
-
-		@property2 = Property.find(find_property)
-	    @hash = Gmaps4rails.build_markers(@property2) do |property, marker|
-	      marker.lat property.latitude
-	      marker.lng property.longitude
-	    end
-
 	end
 
 	def show
+		@property = Property.find(find_property)
+	    @hash = Gmaps4rails.build_markers(@property) do |u, m|
+	      m.json({ :lat => u.latitude })
+	      m.json({ :lng => u.longitude })
+	      m.json({ :id => u.id })
+	    end
+
 		@bills = Bill.all
 		#if current_user.id != params[:id] then redirect_to root_path end
 		if @property.user_id == current_user.id
@@ -74,7 +74,7 @@ class PropertiesController < ApplicationController
 	end
 
 	def find_property
-		@property = Property.find(params[:id])
+		@property = Property.find(params[:id]) rescue nil
 	end
 
 	def signed_in_user
@@ -93,6 +93,10 @@ class PropertiesController < ApplicationController
 
     def sort_direction
     	%w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
+
+    def fulladdress
+    	@property.latitude
     end
 
 end
