@@ -7,8 +7,14 @@ class PropertiesController < ApplicationController
 		user_id = User.find(current_user)
 		@properties = user_id.properties.order(sort_column2 + " " + sort_direction)
 		#.order("created_at ASC")
-
 		@bills = Bill.order(sort_column + " " + sort_direction)
+
+		@property2 = Property.find(find_property)
+	    @hash = Gmaps4rails.build_markers(@property2) do |property, marker|
+	      marker.lat property.latitude
+	      marker.lng property.longitude
+	    end
+
 	end
 
 	def show
@@ -18,7 +24,6 @@ class PropertiesController < ApplicationController
 			#..
 		else
 			return redirect_to root_path, :notice => "You dont have access to this property."
-
 		end
 	end
 
@@ -62,12 +67,10 @@ class PropertiesController < ApplicationController
 		redirect_to @property
 	end
 
-
-
 	private
 
 	def property_params
-		params.require(:property).permit(:address_one, :address_two, :addresstype, :city, :state, :zip_code, :rent, :vacancy)
+		params.require(:property).permit(:address_one, :address_two, :addresstype, :city, :state, :zip_code, :rent, :vacancy, :latitude, :longitude)
 	end
 
 	def find_property

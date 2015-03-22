@@ -67,8 +67,4 @@ module PropertiesHelper
 		direction = column == sort_column2 && sort_direction == "asc" ? "desc" : "asc"
 		link_to title, :sort => column, :direction => direction
 	end
-
-	def full_address(address, state)
-		address + ", " + state
-	end
 end
