@@ -11,12 +11,17 @@ class PropertiesController < ApplicationController
 	end
 
 	def show
-		@property = Property.find(find_property)
-	    @hash = Gmaps4rails.build_markers(@property) do |u, m|
-	      m.json({ :lat => u.latitude })
-	      m.json({ :lng => u.longitude })
-	      m.json({ :id => u.id })
-	    end
+		@property = find_property
+		@hash = Gmaps4rails.build_markers @property do |u, m|
+			m.lat u.geocode.first
+			m.lng u.geocode.second
+			m.json({ :id => u.id })
+		end
+	    # @hash = Gmaps4rails.build_markers(@property) do |u, m|
+	    #   m.lat u.latitude
+	    #   m.lng u.longitude
+	    #   m.json({ :id => u.id })
+	    # end
 
 		@bills = Bill.all
 		#if current_user.id != params[:id] then redirect_to root_path end
@@ -93,10 +98,6 @@ class PropertiesController < ApplicationController
 
     def sort_direction
     	%w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-    end
-
-    def fulladdress
-    	@property.latitude
     end
 
 end
