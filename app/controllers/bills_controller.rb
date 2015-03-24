@@ -6,6 +6,7 @@ class BillsController < ApplicationController
 
 	def index
 		user_id2 = User.find(current_user)
+		@current_user_id_bill = current_user.id
 		@bills = user_id2.bills.order(sort_column + " " + sort_direction)
 
 		# user_id3 = Property.where(:user_id => current_user)
