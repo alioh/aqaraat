@@ -5,17 +5,15 @@
 	<% end %>
 <% end %>
 <div class="row-fluid">
-    <h4>Property Address:</h4>
-	<p><%= user_property_addrees %></p>
-	<h4>Due Date:</h4>
-	<p><%= @bill.duedate %></p>
-	<h4>Bill Type:</h4>
-	<p><%= @bill.billtype %></p>
-	<h4>Amount:</h4>
-	<p>$<%= @bill.amount %></p>
-	<h4>Description:</h4>
-	<p><%= @bill.description %></p>
-	<h4>Status:</h4>
-	<p><%= @bill.status %></p>
-	<%= link_to "Back", "/properties", class: "btn btn-primary" %>
+    <font size="4">Property Address:</font>
+	<%= user_property_addrees %><br>
+	<font size="4">Due Date:</font> <%= @bill.duedate %><br>
+	<font size="4">Bill Type:</font> <%= @bill.billtype %><br>
+	<font size="4">Amount:</font> $<%= @bill.amount %><br>
+	<font size="4">Description:</font><br>
+	<%= @bill.description %>
+	<br><font size="4">Status:</font> <%= @bill.status %>
+	<br>
+	<br>
+	<div class='no-print'><%= link_to "Back", "/properties", class: "btn btn-primary" %> <button class="btn btn-primary no-print" onClick="window.print()">Print this page</div>
 </div>
