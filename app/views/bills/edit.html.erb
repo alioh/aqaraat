@@ -11,7 +11,7 @@
 	<%= f.input :property_id,collection: users_properties, :selected => :property_id, label: "Property Address", :input_html => {:style=> 'width: 250px'} %>
 	<%= f.input :duedate, label: "Due Date", :input_html => {:style=> 'width: 250px'} %>
 	<%= f.input :amount, label: "Amount", :input_html => {:style=> 'width: 250px'} %>
-	<%= f.input :billtype, collection: [ "Energy", "Water", "Telephone", "Other" ], label: "Type", :input_html => {:style=> 'width: 250px'} %>
+	<%= f.input :billtype, collection: [ "Rent", "Energy", "Water", "Telephone", "Other" ], label: "Type", :input_html => {:style=> 'width: 250px'} %>
 	<%= f.input :description, label: "Description", :input_html => {:style=> 'width: 250px'} %>
 	<%= f.input :status, collection: [ "Paid", "Unpaid" ], label: "Status", :input_html => {:style=> 'width: 250px'} %>
 
