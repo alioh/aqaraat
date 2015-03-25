@@ -1,13 +1,16 @@
 class BillsController < ApplicationController
-	before_action :signed_in_user, only: [:index, :show, :edit, :update, :destroy, :create, :new]
+	before_action :signed_in_user, only: [:index, :unpaid, :show, :edit, :update, :destroy, :create, :new]
 	before_action :find_bill, only: [:show, :edit, :update, :destroy]
 	helper_method :sort_column, :sort_direction
 
 
 	def index
 		user_id2 = User.find(current_user)
-		@current_user_id_bill = current_user.id
+		all_bills = Bill.all
+		@current_user_bills = all_bills.where("user_id = '?'", current_user)
 		@bills = user_id2.bills.order(sort_column + " " + sort_direction)
+		overdue_bills = @bills.where("duedate <= '?'", Time.zone.now)
+		unpaid_bills = @bills.where("status <= 'unpaid'")
 
 		# user_id3 = Property.where(:user_id => current_user)
 		# @properties = user_id3.properties

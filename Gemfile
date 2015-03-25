@@ -29,6 +29,8 @@ gem 'simple_form', '~> 3.1.0'
 gem 'gmaps4rails', '~> 2.1.2'
 gem 'underscore-rails', '~> 1.8.2'
 gem 'geocoder', '~> 1.2.7'
+gem 'jquery-datatables-rails', github: "rweng/jquery-datatables-rails"
+gem 'will_paginate'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
