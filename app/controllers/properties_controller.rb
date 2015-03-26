@@ -12,11 +12,11 @@ class PropertiesController < ApplicationController
 		@current_user_residents = residents.where("user_id = '?'", current_user)
 	end
 
-	def show
+	def show  
 		property = find_property
 		@hash = Gmaps4rails.build_markers @property do |u, m|
-			m.lat u.geocode.first
-			m.lng u.geocode.second
+			m.lat u.geocode.first rescue nil
+			m.lng u.geocode.second rescue nil
 			m.json({ :id => u.id })
 		end
 	    # @hash = Gmaps4rails.build_markers(@property) do |u, m|
@@ -32,7 +32,7 @@ class PropertiesController < ApplicationController
 		else
 			return redirect_to root_path, :notice => "You dont have access to this property."
 		end
-		@residents = Resident.find(@property.resident_id)
+		@residents = Resident.find(@property.resident_id) rescue nil
 
 	end
 

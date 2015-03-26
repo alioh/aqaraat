@@ -14,7 +14,7 @@
 				<font size="4">Zip code:</font>  <%= @property.zip_code %><br>
 				<font size="4">Monthly rent:</font>  <%= @property.rent %><br>
 				<font size="4">Vacancy:</font>  <%= @property.vacancy %><br>
-				<font size="4">Current resident:</font>  <%= @residents.name %><br>
+				<font size="4">Current resident:</font>  <%= @residents.name rescue nil %><br>
 				<font size="4">Property ID#:</font>  <%= @property.id %><br>
 			</font>
 			<br>
