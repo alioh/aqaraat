@@ -1,14 +1,12 @@
 class BillsController < ApplicationController
-	before_action :signed_in_user, only: [:index, :unpaid, :show, :edit, :update, :destroy, :create, :new]
+	before_action :signed_in_user, only: [:index, :show, :edit, :update, :destroy, :create, :new]
 	before_action :find_bill, only: [:show, :edit, :update, :destroy]
-	helper_method :sort_column, :sort_direction
-
 
 	def index
 		user_id2 = User.find(current_user)
 		all_bills = Bill.all
 		@current_user_bills = all_bills.where("user_id = '?'", current_user)
-		@bills = user_id2.bills.order(sort_column + " " + sort_direction)
+		@bills = user_id2.bills.all
 		overdue_bills = @bills.where("duedate <= '?'", Time.zone.now)
 		unpaid_bills = @bills.where("status <= 'unpaid'")
 
@@ -86,13 +84,4 @@ class BillsController < ApplicationController
 	        redirect_to root_path, :notice => "You must be logged in to view your bills."
     	end
     end
-
-    def sort_column
-    	Bill.column_names.include?(params[:sort]) ? params[:sort] : "id"
-    end
-
-    def sort_direction
-    	%w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-    end
-
 end

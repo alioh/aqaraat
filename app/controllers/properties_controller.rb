@@ -1,17 +1,19 @@
 class PropertiesController < ApplicationController
 	before_action :signed_in_user, only: [:index, :show, :edit, :update, :destroy, :create, :new]
 	before_action :find_property, only: [:show, :edit, :update, :destroy]
-	helper_method :sort_column, :sort_direction, :sort_column2, :full_address
 
-	def index
+	def dashboard
 		user_id = User.find(current_user)
-		@properties = user_id.properties.order(sort_column2 + " " + sort_direction)
+		@properties = user_id.properties.all
 		#.order("created_at ASC")
-		@bills = Bill.order(sort_column + " " + sort_direction)
+		bills = Bill.all
+		@current_user_bills = bills.where("user_id = '?'", current_user)
+		residents = Resident.all
+		@current_user_residents = residents.where("user_id = '?'", current_user)
 	end
 
 	def show
-		@property = find_property
+		property = find_property
 		@hash = Gmaps4rails.build_markers @property do |u, m|
 			m.lat u.geocode.first
 			m.lng u.geocode.second
@@ -22,7 +24,7 @@ class PropertiesController < ApplicationController
 	    #   m.lng u.longitude
 	    #   m.json({ :id => u.id })
 	    # end
-
+		#@residents2 = residents.where("property_id = '?'", @property.id)
 		@bills = Bill.all
 		#if current_user.id != params[:id] then redirect_to root_path end
 		if @property.user_id == current_user.id
@@ -30,6 +32,8 @@ class PropertiesController < ApplicationController
 		else
 			return redirect_to root_path, :notice => "You dont have access to this property."
 		end
+		@residents = Resident.find(@property.resident_id)
+
 	end
 
 	def new
@@ -75,7 +79,7 @@ class PropertiesController < ApplicationController
 	private
 
 	def property_params
-		params.require(:property).permit(:address_one, :address_two, :addresstype, :city, :state, :zip_code, :rent, :vacancy, :latitude, :longitude)
+		params.require(:property).permit(:address_one, :address_two, :addresstype, :city, :state, :zip_code, :rent, :vacancy, :resident_id, :latitude, :longitude)
 	end
 
 	def find_property
@@ -91,13 +95,4 @@ class PropertiesController < ApplicationController
     def sort_column2
     	Property.column_names.include?(params[:sort]) ? params[:sort] : "id"
     end
-
-    def sort_column
-    	Bill.column_names.include?(params[:sort]) ? params[:sort] : "id"
-    end
-
-    def sort_direction
-    	%w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-    end
-
 end

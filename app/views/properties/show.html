@@ -14,6 +14,7 @@
 				<font size="4">Zip code:</font>  <%= @property.zip_code %><br>
 				<font size="4">Monthly rent:</font>  <%= @property.rent %><br>
 				<font size="4">Vacancy:</font>  <%= @property.vacancy %><br>
+				<font size="4">Current resident:</font>  <%= @residents.name %><br>
 				<font size="4">Property ID#:</font>  <%= @property.id %><br>
 			</font>
 			<br>
@@ -88,7 +89,7 @@
 <!-- <a class="btn btn-primary" href="/properties/new">Add new property</a> -->
 <div class="form-actions">
 	<%= link_to "Add new bill", new_bill_path, class: "btn btn-primary" %>
-	<%= link_to "Back", "/properties", class: "btn btn-primary" %>
+	<%= link_to "Back", "/dashboard", class: "btn btn-primary" %>
 </div>
 
 

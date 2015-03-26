@@ -1,14 +1,13 @@
 module ApplicationHelper
 
-	def sortable(column, title=nil)
-		title ||= column.titleize
-		direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
-		link_to title, :sort => column, :direction => direction
-	end
-
 	def username
 		n = User.find(current_user)
 		n.name
+	end
+
+	def current_resident_address(property_id) 
+		property = Property.find(property_id)  rescue nil
+		return property.address_one + ", " + property.address_two
 	end
 
 end

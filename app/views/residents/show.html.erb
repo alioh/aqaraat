@@ -1,0 +1,8 @@
+<div class="row-fluid">
+    <font size="4">Resident name:</font> <%= @resident.name %><br>
+    <font size="4">Other details:</font> <%= @resident.details %><br>
+    <font size="4">Current Property:</font> <%= @resident.property_id %><br>
+	<br>
+	<br>
+	<div class='no-print'><%= link_to "Edit this resident", edit_resident_path(@resident.id), class: "btn btn-primary" %> <%= link_to "Back", "/dashboard", class: "btn btn-primary" %></div>
+</div>

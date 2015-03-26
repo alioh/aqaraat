@@ -56,15 +56,13 @@ module PropertiesHelper
 	  ]
 	end
 
-	def sortable(column, title=nil)
-		title ||= column.titleize
-		direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
-		link_to title, :sort => column, :direction => direction
+	def all_resedints_map
+		res_list = []
+		user_id = User.find(current_user)
+		resedints = Resident.where("user_id = '?'", current_user)
+		resedints.each { |b| 
+			res_list << [b.id, b.name] }
+
 	end
 
-	def sortable2(column, title=nil)
-		title ||= column.titleize
-		direction = column == sort_column2 && sort_direction == "asc" ? "desc" : "asc"
-		link_to title, :sort => column, :direction => direction
-	end
 end

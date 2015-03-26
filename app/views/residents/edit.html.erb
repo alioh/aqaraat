@@ -1,0 +1,13 @@
+<h1> Edit Redisent Details </h1>
+
+<%= simple_form_for(@resident, html: { class: "form-horizontal"}) do |f| %>
+	<%= f.input :name, label: "Name", :input_html => {:style=> 'width: 250px'} %>
+	<%= f.input :details, label: "Other details about the resident", :input_html => {:style=> 'width: 250px'} %>
+	<%= f.input :property_id, collection: all_properties , label: "Property ID", :input_html => {:style=> 'width: 250px'} %>
+
+  <div class="form-actions">
+    <%= f.submit "Submit" , class: "btn btn-primary" %>
+    <%= link_to "Back", "/dashboard", class: "btn btn-primary" %>
+  </div>
+
+<% end %>
