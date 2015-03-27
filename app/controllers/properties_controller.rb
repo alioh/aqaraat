@@ -73,7 +73,7 @@ class PropertiesController < ApplicationController
 			redirect_to root_path, :notice => "You dont have access to this property."
 		end
 		@property.destroy
-		redirect_to @property
+		redirect_to @dashboard
 	end
 
 	private
