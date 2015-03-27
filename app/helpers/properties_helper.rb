@@ -62,6 +62,7 @@ module PropertiesHelper
 		residents = Resident.where("user_id = '?'", current_user)
 		residents.each { |b| 
 			res_list << [b.id, b.name] }
+		#s
 	end
 
 	def current_resident_address(resident_id) 
