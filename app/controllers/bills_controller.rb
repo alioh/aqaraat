@@ -27,9 +27,6 @@ class BillsController < ApplicationController
 
 	def new
 		@bill = Bill.new
-		# user_id2 = User.find(current_user)
-		# @properties  = Property.where(user_id: user_id2).take
-		@properties = Property.all
 	end
 
 	def create
@@ -72,7 +69,7 @@ class BillsController < ApplicationController
 	private
 
 	def bill_params
-		params.require(:bill).permit(:property_id, :duedate, :amount, :billtype, :status, :description)
+		params.require(:bill).permit(:property_id, :duedate, :amount, :billtype, :status, :description, :resident_id)
 	end
 
 	def find_bill

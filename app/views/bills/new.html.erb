@@ -1,14 +1,7 @@
 <h1> New bill </h1>
-<% users_properties = [] %>
-<% users_properties_address = [] %>
-<% @properties.each do |b| %>
-	<% if b.user_id == current_user.id %>
-		<% users_properties << b.id %>
-		<% users_properties_address << b.address_one %>
-	<% end %>
-<% end %>
 <%= simple_form_for(@bill, html: { class: "form-horizontal"}) do |f| %>
-	<%= f.input :property_id, collection: users_properties, label: "Property ID", :input_html => {:style=> 'width: 250px'} %>
+	<%= f.input :resident_id, collection: all_residents_map, label: "Bill to", :input_html => {:style=> 'width: 250px'} %>
+	<%= f.input :property_id, collection: all_users_properties, label: "On Property", :input_html => {:style=> 'width: 250px'} %>
 	<%= f.input :duedate, label: "Due Date", :input_html => {:style=> 'width: 250px'} %>
 	<%= f.input :amount, label: "Amount", :input_html => {:style=> 'width: 250px'} %>
 	<%= f.input :billtype, collection: [ "Rent", "Energy", "Water", "Telephone", "Other" ], label: "Type", :input_html => {:style=> 'width: 250px'} %>

@@ -2,7 +2,7 @@
 
 
 
-<h1> Your Properties: </h1>
+<h3> Your Properties: </h3>
 Red label = not available
 <table class="table table-striped" border="0" style="width:100%" id="protable">
 	<thead>
@@ -32,7 +32,7 @@ Red label = not available
 				<td><%= pro.state %></td>
 				<td><%= pro.zip_code %></td>
 				<td>$<%= pro.rent %></td>
-				<td><%= pro.resident_id %></td>
+				<td><%= current_resident(pro.resident_id) %></td>
 				<td>
 					<div class="btn-group btn-group-xs" role="group" aria-label="...">
 					  <div type="button" class="btn btn-default"><%= link_to "View", pro %></div>
@@ -52,7 +52,7 @@ Red label = not available
 				<td><%= pro.state %></td>
 				<td><%= pro.zip_code %></td>
 				<td>$<%= pro.rent %></td>
-				<td><%= pro.resident_id %></td>
+				<td><%= current_resident(pro.resident_id) %></td>
 				<td>
 					<div class="btn-group btn-group-xs" role="group" aria-label="...">
 					  <div type="button" class="btn btn-default"><%= link_to "View", pro %></div>
@@ -72,7 +72,7 @@ Red label = not available
 	<%= link_to "Add new property", new_property_path, class: "btn btn-primary" %>
 </div>
 
-<h1> Your Properties Bills: </h1>
+<h3> Your Bills: </h3>
 <table class="table table-striped" border="0" style="width:100%" id="billstable">
 	<thead>
 		<tr>
@@ -92,12 +92,12 @@ Red label = not available
 			<% if  b.status == "Unpaid" and b.duedate < Time.zone.now %>
 				<tr class="danger">
 					<td><%= count %></td>
-					<td><%= b.id %></td>
+					<td><%= current_resident(b.resident_id) %></td>
 					<td><%= b.duedate %></td>
 					<td><%= b.billtype %></td>
 					<td><%= b.status %></td>
 					<td>$<%= b.amount %></td>
-					<td><%= b.property_id %></td>
+					<td><%= property_id_to_address(b.property_id) %></td>
 					<td>
 						<div class="btn-group btn-group-xs" role="group" aria-label="...">
 						  <div type="button" class="btn btn-default"><%= link_to "View", b %></div>
@@ -110,12 +110,12 @@ Red label = not available
 			<% else %>
 				<tr>
 					<td><%= count %></td>
-					<td><%= b.id %></td>
+					<td><%= current_resident(b.resident_id) %></td>
 					<td><%= b.duedate %></td>
 					<td><%= b.billtype %></td>
 					<td><%= b.status %></td>
 					<td>$<%= b.amount %></td>
-					<td><%= b.property_id %></td>
+					<td><%= property_id_to_address(b.property_id) %></td>
 					<td>
 						<div class="btn-group btn-group-xs" role="group" aria-label="...">
 						  <div type="button" class="btn btn-default"><%= link_to "View", b %></div>
@@ -136,7 +136,7 @@ Red label = not available
 	<%= link_to "Add new bill", new_bill_path, class: "btn btn-primary" %>
 </div>
 
-<h1> Your Current Residents: </h1>
+<h3> Your Residents: </h3>
 
 <table class="table table-striped" border="0" style="width:100%" id="restable">
 	<thead>
@@ -152,7 +152,7 @@ Red label = not available
 		<% @current_user_residents.each do |b| %>
 			<td><%= count %></td>
 			<td><%= b.name %></td>
-			<td><%= current_resident_address(b.property_id)  rescue nil %></td>
+			<td><%= current_resident_address(b.id) %></td>
 			<td>
 				<div class="btn-group btn-group-xs" role="group" aria-label="...">
 					<div type="button" class="btn btn-default"><%= link_to "View", b %></div>

@@ -8,6 +8,7 @@
 	<% end %>
 <% end %>
 <%= simple_form_for(@bill, html: { class: "form-horizontal"}) do |f| %>
+	<%= f.input :resident_id, collection: all_residents_map, label: "Bill to", :input_html => {:style=> 'width: 250px'} %>
 	<%= f.input :property_id, collection: users_properties, :selected => :property_id, label: "Property Address", :input_html => {:style=> 'width: 250px'} %>
 	<%= f.input :duedate, label: "Due Date", :input_html => {:style=> 'width: 250px'} %>
 	<%= f.input :amount, label: "Amount", :input_html => {:style=> 'width: 250px'} %>

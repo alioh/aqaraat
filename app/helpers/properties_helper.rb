@@ -56,13 +56,35 @@ module PropertiesHelper
 	  ]
 	end
 
-	def all_resedints_map
+	def all_residents_map
 		res_list = []
 		user_id = User.find(current_user)
-		resedints = Resident.where("user_id = '?'", current_user)
-		resedints.each { |b| 
+		residents = Resident.where("user_id = '?'", current_user)
+		residents.each { |b| 
 			res_list << [b.id, b.name] }
-
 	end
 
+	def current_resident_address(resident_id) 
+		property_address = nil
+		property = Property.where("resident_id = '?'", resident_id)  
+		property.each { |b| 
+			property_address = b.address_one + ", " + b.address_two }
+		return property_address
+	end
+
+	def current_resident(a_resident_id)
+		resident_name = nil
+		residents = Resident.where("id = '?'", a_resident_id)
+		residents.each { |b| 
+			resident_name = b.name }
+		return resident_name
+	end
+
+	def property_id_to_address(property_id)
+		property_address = nil
+		property = Property.where("id= '?'", property_id)  
+		property.each { |b| 
+			property_address = b.address_one + ", " + b.address_two }
+		return property_address
+	end
 end
