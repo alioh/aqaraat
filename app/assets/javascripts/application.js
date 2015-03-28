@@ -12,12 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.turbolinks
 //= require bootstrap
-//= require turbolinks
 //= require underscore
 //= require highcharts
 //= require gmaps/google
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/2/jquery.dataTables.bootstrap
+//= require turbolinks
 //= require_tree .
 

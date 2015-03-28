@@ -5,7 +5,7 @@ class BillsController < ApplicationController
 	def index
 		user_id2 = User.find(current_user)
 		all_bills = Bill.all
-		@current_user_bills = all_bills.where("user_id = '?'", current_user)
+		@current_bills = all_bills.where("user_id = '?'", current_user)
 		@bills = user_id2.bills.all
 		overdue_bills = @bills.where("duedate <= '?'", Time.zone.now)
 		unpaid_bills = @bills.where("status <= 'unpaid'")
@@ -63,7 +63,7 @@ class BillsController < ApplicationController
 			redirect_to root_path, :notice => "You dont have access to this bill."
 		end
 		@bill.destroy
-		redirect_to @bill
+		redirect_to dashboard_path
 	end
 
 	private

@@ -35,7 +35,7 @@ Red label = not available
 				<td><%= current_resident(pro.resident_id) %></td>
 				<td>
 					<div class="btn-group btn-group-xs" role="group" aria-label="...">
-					  <div type="button" class="btn btn-default"><%= link_to "View", pro %></div>
+					  <div type="button" class="btn btn-default"><%= link_to "View", pro, 'data-no-turbolink' => true %></div>
 					  <div type="button" class="btn btn-default"><%= link_to "Edit", edit_property_path(pro)%></div>
 					  <div type="button" class="btn btn-default"><%= link_to "Delete", property_path(pro), method: :delete, data: { confirm: "Are you sure you want to delete this property?" }%></div>
 					</div>
@@ -55,7 +55,7 @@ Red label = not available
 				<td><%= current_resident(pro.resident_id) %></td>
 				<td>
 					<div class="btn-group btn-group-xs" role="group" aria-label="...">
-					  <div type="button" class="btn btn-default"><%= link_to "View", pro %></div>
+					  <div type="button" class="btn btn-default"><%= link_to "View", pro, 'data-no-turbolink' => true %></div>
 					  <div type="button" class="btn btn-default"><%= link_to "Edit", edit_property_path(pro)%></div>
 					  <div type="button" class="btn btn-default"><%= link_to "Delete", property_path(pro), method: :delete, data: { confirm: "Are you sure you want to delete this property?" }%></div>
 					</div>
@@ -68,11 +68,11 @@ Red label = not available
 </table>
 
 <!-- <a class="btn btn-primary" href="/properties/new">Add new property</a> -->
-<div class="form-actions">
+<div class="form-actions"> 
 	<%= link_to "Add new property", new_property_path, class: "btn btn-primary" %>
 </div>
 
-<h3> Your Bills: </h3>
+<h3> Your Bills: <%= link_to image_tag("external.gif"), bills_path, 'data-no-turbolink' => true %> </h3> 
 <table class="table table-striped" border="0" style="width:100%" id="billstable">
 	<thead>
 		<tr>
@@ -82,7 +82,7 @@ Red label = not available
 			<th>Bill Type</th>
 			<th>Status</th>
 			<th>Amount</th>
-			<th>Property ID</th>
+			<th>Property Address</th>
 			<th>Action</th>
 		</tr>
 	</thead>
@@ -100,7 +100,7 @@ Red label = not available
 					<td><%= property_id_to_address(b.property_id) %></td>
 					<td>
 						<div class="btn-group btn-group-xs" role="group" aria-label="...">
-						  <div type="button" class="btn btn-default"><%= link_to "View", b %></div>
+						  <div type="button" class="btn btn-default"><%= link_to "View", b, 'data-no-turbolink' => true %></div>
 						  <div type="button" class="btn btn-default"><%= link_to "Edit", edit_bill_path(b)%></div>
 						  <div type="button" class="btn btn-default"><%= link_to "Delete", bill_path(b), method: :delete, data: { confirm: "Are you sure you want to delete this bill?" }%></div>
 						</div>
@@ -118,7 +118,7 @@ Red label = not available
 					<td><%= property_id_to_address(b.property_id) %></td>
 					<td>
 						<div class="btn-group btn-group-xs" role="group" aria-label="...">
-						  <div type="button" class="btn btn-default"><%= link_to "View", b %></div>
+						  <div type="button" class="btn btn-default"><%= link_to "View", b, 'data-no-turbolink' => true %></div>
 						  <div type="button" class="btn btn-default"><%= link_to "Edit", edit_bill_path(b)%></div>
 						  <div type="button" class="btn btn-default"><%= link_to "Delete", bill_path(b), method: :delete, data: { confirm: "Are you sure you want to delete this bill?" }%></div>
 						</div>
@@ -136,7 +136,7 @@ Red label = not available
 	<%= link_to "Add new bill", new_bill_path, class: "btn btn-primary" %>
 </div>
 
-<h3> Your Residents: </h3>
+<h3> Your Residents: <%= link_to image_tag("external.gif"), residents_path, 'data-no-turbolink' => true %></h3>
 
 <table class="table table-striped" border="0" style="width:100%" id="restable">
 	<thead>
