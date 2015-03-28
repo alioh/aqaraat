@@ -5,5 +5,6 @@ class Property < ActiveRecord::Base
 	has_many :bills
 	geocoded_by :address_one
 	after_validation :geocode
+	validates_presence_of :resident_id, :addresstype, :city, :state
 
 end
