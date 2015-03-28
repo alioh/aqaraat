@@ -8,13 +8,13 @@
 	<% end %>
 <% end %>
 <%= simple_form_for(@bill, html: { class: "form-horizontal"}) do |f| %>
-	<%= f.input :resident_id, collection: all_residents_map, label: "Bill to", :input_html => {:style=> 'width: 250px'} %>
-	<%= f.input :property_id, collection: users_properties, :selected => :property_id, label: "Property Address", :input_html => {:style=> 'width: 250px'} %>
-	<%= f.input :duedate, label: "Due Date", :input_html => {:style=> 'width: 250px'} %>
-	<%= f.input :amount, label: "Amount", :input_html => {:style=> 'width: 250px'} %>
-	<%= f.input :billtype, collection: [ "Rent", "Energy", "Water", "Telephone", "Other" ], label: "Type", :input_html => {:style=> 'width: 250px'} %>
+	<%= f.input :resident_id, collection: all_residents_map, required: true, label: "Bill to", :input_html => {:style=> 'width: 250px'} %>
+	<%= f.input :property_id, collection: users_properties, required: true, :selected => :property_id, label: "Property Address", :input_html => {:style=> 'width: 250px'} %>
+	<%= f.input :duedate, label: "Due Date", required: true, :input_html => {:style=> 'width: 250px'} %>
+	<%= f.input :amount, label: "Amount", required: true, :input_html => {:style=> 'width: 250px'} %>
+	<%= f.input :billtype, collection: [ "Rent", "Energy", "Water", "Telephone", "Other" ], required: true, label: "Type", :input_html => {:style=> 'width: 250px'} %>
 	<%= f.input :description, label: "Description", :input_html => {:style=> 'width: 250px'} %>
-	<%= f.input :status, collection: [ "Paid", "Unpaid" ], label: "Status", :input_html => {:style=> 'width: 250px'} %>
+	<%= f.input :status, collection: [ "Paid", "Unpaid" ], required: true, label: "Status", :input_html => {:style=> 'width: 250px'} %>
 
   <div class="form-actions">
     <%= f.submit "Submit" , class: "btn btn-primary" %>

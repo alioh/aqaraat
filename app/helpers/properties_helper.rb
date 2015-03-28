@@ -1,6 +1,7 @@
 module PropertiesHelper
 	def us_states
 	  [
+	  	['Not in the US', 'None'],
 	    ['Alabama', 'AL'],
 	    ['Alaska', 'AK'],
 	    ['Arizona', 'AZ'],
@@ -56,13 +57,14 @@ module PropertiesHelper
 	  ]
 	end
 
+
 	def all_residents_map
-		res_list = []
+		res_list = [["None", "None"]]
 		user_id = User.find(current_user)
 		residents = Resident.where("user_id = '?'", current_user)
 		residents.each { |b| 
-			res_list << [b.id, b.name] }
-		#s
+			res_list << [b.name, b.id] }
+		return res_list
 	end
 
 	def current_resident_address(resident_id) 

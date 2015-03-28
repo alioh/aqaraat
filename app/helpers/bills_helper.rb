@@ -1,17 +1,19 @@
 module BillsHelper
+	
 	def all_residents_map
-		res_list = []
+		res_list = [["None", "None"]]
+		user_id = User.find(current_user)
 		residents = current_user.residents
 		residents.each { |b| 
-			res_list << [b.id, b.name] }
+			res_list << [b.name, b.id] }
 	end
 
 	def all_users_properties
-		pro_list = []
+		pro_list = [["None", "None"]]
 		user_id = User.find(current_user)
 		properties = current_user.properties
 		properties.each { |b| 
-			pro_list << [b.id, b.address_one] }
+			pro_list << [b.address_one, b.id] }
 		return pro_list
 	end
 
