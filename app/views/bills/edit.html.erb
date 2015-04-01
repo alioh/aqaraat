@@ -1,4 +1,4 @@
-<h1> Edit Bill </h1>
+<h3> Edit Bill </h3>
 
 <%= simple_form_for(@bill, html: { class: "form-horizontal"}) do |f| %>
 	<%= f.input :resident_id, collection: all_residents_map, required: true, :selected => @bill.resident_id, label: "Bill to", :input_html => {:style=> 'width: 250px'} %>
@@ -10,8 +10,8 @@
 	<%= f.input :status, collection: [ "Paid", "Unpaid" ], required: true, label: "Status", :input_html => {:style=> 'width: 250px'} %>
 
   <div class="form-actions">
-    <%= f.submit "Submit" , class: "btn btn-primary" %>
-    <%= link_to "Back", "/dashboard", class: "btn btn-primary" %>
+    <%= f.submit "Submit" , class: "btn btn-primary", 'data-no-turbolink' => true %>
+    <%= link_to "Back", bills_path, class: "btn btn-primary", 'data-no-turbolink' => true %>
   </div>
 
 <% end %>

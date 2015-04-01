@@ -16,7 +16,6 @@ class ResidentsController < ApplicationController
 			return redirect_to root_path, :notice => "You dont have access to this page."
 
 		end
-
 		@bills = Bill.all
 	end
 

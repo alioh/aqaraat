@@ -16,5 +16,5 @@
 	<br><font size="4">Status:</font> <%= @bill.status %>
 	<br>
 	<br>
-	<div class='no-print'><%= link_to "Back", "/dashboard", class: "btn btn-primary" %> <button class="btn btn-primary no-print" onClick="window.print()">Print this page</div>
+	<div class='no-print'><%= link_to "Back", bills_path, 'data-no-turbolink' => true,  class: "btn btn-primary" %> <button class="btn btn-primary no-print" onClick="window.print()">Print this page</div>
 </div>

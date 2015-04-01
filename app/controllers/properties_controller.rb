@@ -2,7 +2,7 @@ class PropertiesController < ApplicationController
 	before_action :signed_in_user, only: [:index, :show, :edit, :update, :destroy, :create, :new]
 	before_action :find_property, only: [:show, :edit, :update, :destroy]
 
-	def dashboard
+	def index
 		user_id = User.find(current_user)
 		@properties = user_id.properties.all
 		#.order("created_at ASC")
@@ -73,7 +73,7 @@ class PropertiesController < ApplicationController
 			redirect_to root_path, :notice => "You dont have access to this property."
 		end
 		@property.destroy
-		redirect_to dashboard_path
+		redirect_to properties_path
 	end
 
 	private

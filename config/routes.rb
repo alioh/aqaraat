@@ -5,10 +5,11 @@ Rails.application.routes.draw do
   resources :residents
   
   get 'about' => "pages#about"
-  get 'bills' => "bills#index"
   get 'part' => "pages#part"
+  get 'bills' => "bills#index"
   get 'residents' => "residents#index"
-  get 'dashboard' => "properties#dashboard"
+  get 'properties' => "properties#index"
+  get 'dashboard' => "pages#dashboard"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

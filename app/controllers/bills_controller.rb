@@ -23,6 +23,7 @@ class BillsController < ApplicationController
 			return redirect_to root_path, :notice => "You dont have access to this bill."
 
 		end
+		@bills = Bill.all
 	end
 
 	def new
@@ -63,7 +64,7 @@ class BillsController < ApplicationController
 			redirect_to root_path, :notice => "You dont have access to this bill."
 		end
 		@bill.destroy
-		redirect_to dashboard_path
+		redirect_to bills_path
 	end
 
 	private
