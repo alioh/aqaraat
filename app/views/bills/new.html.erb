@@ -1,4 +1,5 @@
 <h3>New bill </h3>
+<div class="container-fluid">
 <%= simple_form_for(@bill, html: { class: "form-horizontal"}) do |f| %>
 	<%= f.input :resident_id, collection: all_residents_map, required: true, selected: "none", label: "Bill to", :input_html => {:style=> 'width: 250px'} %>
 	<%= f.input :property_id, collection: all_users_properties, required: true, selected: "none",  label: "On Property", :input_html => {:style=> 'width: 250px'} %>
@@ -12,5 +13,6 @@
     <%= f.submit "Submit" , class: "btn btn-primary", 'data-no-turbolink' => true %>
 	<%= link_to "Back", bills_path, class: "btn btn-primary", 'data-no-turbolink' => true %>
   </div>
+</div>
 
 <% end %>
