@@ -19,16 +19,9 @@ class PropertiesController < ApplicationController
 			m.lng u.geocode.second rescue nil
 			m.json({ :id => u.id })
 		end
-	    # @hash = Gmaps4rails.build_markers(@property) do |u, m|
-	    #   m.lat u.latitude
-	    #   m.lng u.longitude
-	    #   m.json({ :id => u.id })
-	    # end
-		#@residents2 = residents.where("property_id = '?'", @property.id)
 		@bills = Bill.all
-		#if current_user.id != params[:id] then redirect_to root_path end
 		if @property.user_id == current_user.id
-			#..
+			# ..
 		else
 			return redirect_to root_path, :notice => "You dont have access to this property."
 		end

@@ -1,7 +1,7 @@
 <h3>New Resident: </h3>
 <div class="row">
 <%= simple_form_for(@resident, html: { class: "form-horizontal"}) do |f| %>
-	<%= f.input :name, label: "Name", :input_html => {:style=> 'width: 250px'} %>
+	<%= f.input :name, label: "Name", :input_html => {:style => 'width: 250px'} %>
 	<%= f.input :details, label: "Other details about this resident", :input_html => {:style=> 'width: 250px'} %>
 
   <div class="form-actions">
