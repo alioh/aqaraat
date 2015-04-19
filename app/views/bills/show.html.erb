@@ -1,0 +1,20 @@
+<% user_property_addrees = "" %>
+<% @properties.each do |b| %>
+	<% if b.id == @bill.property_id %>
+		<% user_property_addrees = b.address_one %>
+	<% end %>
+<% end %>
+<div class="container-fluid">
+    <font size="4">To:</font> <%= bill_to(@bill.resident_id) %><br>
+    <font size="4">Property Address:</font>
+	<%= user_property_addrees %><br>
+	<font size="4">Due Date:</font> <%= @bill.duedate %><br>
+	<font size="4">Bill Type:</font> <%= @bill.billtype %><br>
+	<font size="4">Amount:</font> $<%= @bill.amount %><br>
+	<font size="4">Description:</font><br>
+	<%= @bill.description %>
+	<br><font size="4">Status:</font> <%= @bill.status %>
+	<br>
+	<br>
+	<div class='no-print'><%= link_to "Back", bills_path, 'data-no-turbolink' => true,  class: "btn btn-primary" %> <button class="btn btn-primary no-print" onClick="window.print()">Print this page</div>
+</div>

@@ -1,0 +1,16 @@
+<h2>Sign up:</h2>
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-horisontal"}) do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :name, :input_html => {:style=> 'width: 250px'} %>
+  <%= f.input :email, :input_html => {:style=> 'width: 250px'} %>
+  <%= f.input :password, :input_html => {:style=> 'width: 250px'} %>
+  <%= f.input :password_confirmation, :input_html => {:style=> 'width: 250px'} %>
+
+
+  <div class="form-actions">
+    <%= f.submit "Sign up" , class: "btn btn-primary" %>
+  </div>
+
+<% end %>

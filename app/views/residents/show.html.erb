@@ -1,0 +1,66 @@
+<div class="row-fluid">
+<h3> Resident details: </h3>
+    <font size="4">Name:</font> <%= @resident.name %><br>
+    <font size="4">Other details:</font> <%= @resident.details %><br>
+	<br>
+	<div class='no-print'><%= link_to "Edit this resident", edit_resident_path(@resident.id), class: "btn btn-primary" %> <br></div>
+</div>
+<h3> Bills: </h3>
+<table class="row table-responsive" border="0" style="width:100%" id="billstable">
+	<thead>
+		<tr>
+			<th>ID#</th>
+			<th>Due Date</th>
+			<th>Bill Type</th>
+			<th>Status</th>
+			<th>Amount Due</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<% count = 1%>
+	<tbody>
+		<% @bills.each do |b| %>
+		<% next if b.resident_id != @resident.id  %>
+
+		<% if  b.status == "Unpaid" and b.duedate < Time.zone.now %>
+			<tr class="danger">
+				<td><%= count %></td>
+				<td><%= b.duedate %></td>
+				<td><%= b.billtype %></td>
+				<td><%= b.status %></td>
+				<td><%= b.amount %></td>
+				<td>
+					<div class="btn-group btn-group-xs" role="group" aria-label="...">
+					  <button type="button" class="btn btn-default"><%= link_to "View", b %></button>
+					  <button type="button" class="btn btn-default"><%= link_to "Edit", edit_bill_path(b)%></button>
+					  <button type="button" class="btn btn-default"><%= link_to "Delete", bill_path(b), method: :delete, data: { confirm: "Are you sure you want to delete this bill?" }%></button>
+					</div>
+				</td>
+				<% count+=1 %>
+			</tr>
+		<% else %>
+		<tr>
+			<td><%= count %></td>
+			<td><%= b.duedate %></td>
+			<td><%= b.billtype %></td>
+			<td><%= b.status %></td>
+			<td><%= b.amount %></td>
+			<td>
+				<div class="btn-group btn-group-xs" role="group" aria-label="...">
+				  <button type="button" class="btn btn-default"><%= link_to "View", b %></button>
+				  <button type="button" class="btn btn-default"><%= link_to "Edit", edit_bill_path(b)%></button>
+				  <button type="button" class="btn btn-default"><%= link_to "Delete", bill_path(b), method: :delete, data: { confirm: "Are you sure you want to delete this bill?" }%></button>
+				</div>
+			</td>
+			<% count+=1 %>
+		</tr>
+		<% end %>
+		<% end %>
+	</tbody>
+</table>
+
+<!-- <a class="btn btn-primary" href="/properties/new">Add new property</a> -->
+<div class="form-actions">
+	<%= link_to "Add new bill", new_bill_path, class: "btn btn-primary" %>
+	<%= link_to "Back", properties_path, class: "btn btn-primary" %>
+</div>
