@@ -4,15 +4,15 @@
 
 <div class="row-fluid">
   <div class="col-md-4 col-xs-15 col-sm-12">
-	<h1>Welecome to Aqaraat!</h1>
+	<h1>Welecome to eProperty!</h1>
 	<img src="https://pbs.twimg.com/profile_images/2187681201/profile.jpg" width=250 hieght=250/>
   </div>
   <div class="col-md-8 col-xs-15 col-sm-12">
     <br>
     <br>
     <br>
-  	<p> Aqaraat is an easy way to manage your property </p>
-    <p> What you can do with Aqaraat: 
+  	<p> eProperty is an easy way to manage your property </p>
+    <p> What you can do with eProperty: 
     <ul>
       <li> Store property details.
       <li> Keep record of history payment.
@@ -20,7 +20,11 @@
     </ul>
     <br>
     <br>
-    <p><a class="btn btn-primary btn-lg" href="users/sign_up" role="button">Sign up!</a></p>
+    <% if signed_in? %>
+      <%else%>
+      <p>
+      <a class="btn btn-primary btn-lg" href="users/sign_up" role="button">Sign up!</a></p>
+      <%end%>
   </div>
 
 </div>

@@ -6,7 +6,7 @@
 	<div class='no-print'><%= link_to "Edit this resident", edit_resident_path(@resident.id), class: "btn btn-primary" %> <br></div>
 </div>
 <h3> Bills: </h3>
-<table class="row table-responsive" border="0" style="width:100%" id="billstable">
+<table class="table table-responsive" border="0" style="width:100%" id="billstable">
 	<thead>
 		<tr>
 			<th>ID#</th>
@@ -62,5 +62,5 @@
 <!-- <a class="btn btn-primary" href="/properties/new">Add new property</a> -->
 <div class="form-actions">
 	<%= link_to "Add new bill", new_bill_path, class: "btn btn-primary" %>
-	<%= link_to "Back", properties_path, class: "btn btn-primary" %>
+	<%= link_to "Back", residents_path, class: "btn btn-primary" %>
 </div>

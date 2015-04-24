@@ -1,7 +1,7 @@
 <h3> Your Properties: </h3>
 Red label = not available
 
-<table class="table-striped" border="0" style="width:100%" id="protable">
+<table class="table table-responsive" border="0" style="width:100%" id="protable">
 	<thead>
 		<tr>
 			<th>#</th>
@@ -19,7 +19,7 @@ Red label = not available
 	<tbody>
 		<% count = 1%>
 		<% @properties.each do |pro| %>
-		<% if  pro.vacancy == "No"%>
+		<% if  pro.vacancy == "No" %>
 			<tr class="danger">
 				<td><%= count %></td>
 				<td><%= pro.address_one %></td>

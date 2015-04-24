@@ -11,7 +11,7 @@
 	</thead>
 	<tbody>
 		<% count = 1%>
-		<% @all_resident.each do |b| %>
+		<% @current_user_residents.each do |b| %>
 			<td><%= count %></td>
 			<td><%= b.name %></td>
 			<td><%= this_user_property(b.id) %></td>

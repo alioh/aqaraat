@@ -5,8 +5,8 @@ class ResidentsController < ApplicationController
 	def index
 		@current_user = current_user
 		user_id = User.find(current_user)
-		@all_resident = Resident.all
-		#@current_user_residents = all_resident.where("user_id = '?'", current_user)
+		all_resident = Resident.all
+		@current_user_residents = all_resident.where("user_id = '?'", current_user)
 	end
 
 	def show
